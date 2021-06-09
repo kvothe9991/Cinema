@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Sytem.Data.Entity;
+using System.Data.Entity;
 using Cine.Models;
 
 namespace Cine.DAL
 {
-    public class Initializer : System.DataMisalignedException.Entity.DropCreateDatabaseIfModelChanges<CineCOntext>
+    public class Initializer : DropCreateDatabaseIfModelChanges<CineContext>
     {
         protected override void Seed(CineContext context)
         {
