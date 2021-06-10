@@ -12,12 +12,68 @@ namespace Cine.Controllers
     {
         CineContext db = new CineContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int criterio = 0)
         {
-            // ricardo hace query de todos los filmes disponibles y los mete en filmes
-            ICollection<Filme> filmes = new List<Filme>();
+            var filmes = from s in db.Filmes
+                           select s;
 
-            return View(new ListadoFilmesModel { Filmes = filmes });
+            filmes = filmes.Where(s => s.Disponible == true);
+
+            if(criterio > 0)
+            {
+                if(criterio == 1) //las + vistas
+                {
+                    var entradas = from s in db.Entradas
+                                   select s;
+                    entradas = entradas.Where(s => filmes.Contains(s.Filme));
+
+                    Dictionary<int, int> vistas = new Dictionary<int, int>(); //<FilmeId, cantidad de veces vista>;
+                    foreach (var e in entradas)
+                    {
+                        if (!vistas.ContainsKey(e.FilmeID))
+                            vistas.Add(e.FilmeID, 0);
+                        vistas[e.FilmeID]++;
+                    }
+                    vistas.OrderBy(s => s.Value);
+                    vistas.Reverse();
+                    filmes = (IQueryable<Filme>) new List<Filme>();
+                    foreach(var v in vistas.Take(10))
+                    {
+                        filmes.Append(db.Filmes.Find(v.Key));
+                    }
+                }
+                else if(criterio == 2) //las + gustadas
+                {
+                    filmes = filmes.OrderBy(s => s.Calificacion);
+                }
+                else if(criterio == 3) // intereses economicos
+                {
+                    var entradas = from s in db.Entradas
+                                   select s;
+                    entradas = entradas.Where(s => filmes.Contains(s.Filme));
+
+                    Dictionary<int, int> vistas = new Dictionary<int, int>(); //<FilmeId, ganancia acumulada>;
+                    foreach (var e in entradas)
+                    {
+                        if (!vistas.ContainsKey(e.FilmeID))
+                            vistas.Add(e.FilmeID, 0);
+                        vistas[e.FilmeID] = vistas[e.FilmeID] + e.Precio;
+                    }
+                    vistas.OrderBy(s => s.Value);
+                    vistas.Reverse();
+                    filmes = (IQueryable<Filme>)new List<Filme>();
+                    foreach (var v in vistas.Take(10))
+                    {
+                        filmes.Append(db.Filmes.Find(v.Key));
+                    }
+                }
+                else if(criterio == 4) //aleatorio
+                {
+
+                }
+            }
+
+            return View(new ListadoFilmesModel { Filmes = (ICollection<Filme>)filmes });
         }
     }
 }

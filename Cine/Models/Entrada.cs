@@ -16,5 +16,6 @@ namespace Cine.Models
         public DateTime HoraCompra { get; set; }
         public DateTime Horario { get; set; }
         public int Sala { get; set; }
+        public int Butaca { get; set; }
     }
 }
