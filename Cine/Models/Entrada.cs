@@ -7,6 +7,7 @@ namespace Cine.Models
 {
     public class Entrada
     {
+        public int EntradaID { get; set; }
         public int SocioID { get; set; }
         public Socio Socio { get; set; }
         public int FilmeID { get; set; }
