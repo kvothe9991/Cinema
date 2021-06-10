@@ -128,7 +128,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CancelacionCompraModelController.cs" />
+    <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListadoFilmesModelController.cs" />
     <Compile Include="DAL\CineContext.cs" />
     <Compile Include="DAL\Initializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,6 +139,7 @@
     <Compile Include="Models\CancelacionCompraModel.cs" />
     <Compile Include="Models\Entrada.cs" />
     <Compile Include="Models\Filme.cs" />
+    <Compile Include="Models\ListadoFilmesModel.cs" />
     <Compile Include="Models\Socio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,6 +180,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\CancelacionCompraModel\Index.cshtml" />
+    <Content Include="Views\ListadoFilmesModel\Index.cshtml" />
+    <Content Include="Views\Filme\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
