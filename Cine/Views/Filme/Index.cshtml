@@ -1,8 +1,40 @@
-﻿@{
-    Page.Title = "Filme";
-    // Layout = "Your Layout Page goes here";
+﻿@model IEnumerable<Cine.Models.Filme>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<h2>Index</h2>
 
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calificacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calificacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FilmeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FilmeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FilmeID })
+        </td>
+    </tr>
+}
+
+</table>

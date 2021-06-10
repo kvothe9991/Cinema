@@ -1,0 +1,43 @@
+﻿@model Cine.Models.Socio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Socio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Puntos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puntos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatosPersonales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatosPersonales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioDescuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioDescuento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SocioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
