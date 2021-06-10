@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Cine.Models
+namespace Cine.ViewModels
 {
-    public class Filme
+    public class FilmeViewModel
     {
-        public int FilmeID { get; set; }
         public bool Disponible { get; set; }
         public int Calificacion { get; set; }
         public List<DateTime> Horarios { get; set; }
         public List<int> Salas { get; set; }
-        public ICollection<Socio> Socios { get; set; }
     }
 }
