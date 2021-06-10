@@ -69,7 +69,21 @@ namespace Cine.Controllers
                 }
                 else if(criterio == 4) //aleatorio
                 {
+                    List<Filme> list = filmes.ToList();
+                    Random r = new Random();
 
+                    for (int i = 0; i < list.Count(); i++)
+                    {
+                        int rint = r.Next(i, list.Count());
+                        Filme filmet = list[i];
+                        list[i] = list[rint];
+                        list[rint] = filmet;
+                    }
+                    filmes = (IQueryable<Filme>)new List<Filme>();
+                    foreach (var x in list.Take(10))
+                    {
+                        filmes.Append(x);
+                    }
                 }
             }
 
