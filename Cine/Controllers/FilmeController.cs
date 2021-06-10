@@ -8,22 +8,21 @@ using Cine.DAL;
 
 namespace Cine.Controllers
 {
-    public class CancelacionCompraModelController : Controller
+    public class FilmeController : Controller
     {
         private CineContext db = new CineContext();
 
         public ActionResult Index(int id)
         {
-            CancelacionCompraModel ccm = new CancelacionCompraModel { };
+            Filme f = new Filme { };
 
             if (id != 0)
             {
-                // Ricardo le mete query a db buscando id
-                // cancela la compra
-                // setea ccm
+                // Ricardo tira query pa ver si lo encuentra
+                // y setea f
             }
 
-            return View(ccm);
+            return View(f);
         }
     }
 }
