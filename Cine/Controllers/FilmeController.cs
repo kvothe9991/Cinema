@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Cine.Models;
 using Cine.DAL;
+using System.Net;
 
 namespace Cine.Controllers
 {
@@ -12,17 +13,18 @@ namespace Cine.Controllers
     {
         private CineContext db = new CineContext();
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int? id)
         {
-            Filme f = new Filme { };
-
-            if (id != 0)
+            if (id == null)
             {
-                // Ricardo tira query pa ver si lo encuentra
-                // y setea f
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            return View(f);
+            Filme filme = db.Filmes.Find(id);
+            if (filme == null)
+            {
+                return HttpNotFound();
+            }
+            return View(filme);
         }
     }
 }
