@@ -17,6 +17,8 @@ namespace Cine.DAL
         public DbSet<Entrada> Entradas { get; set; }
 
         public DbSet<Filme> Filmes { get; set; }
+        
+        public DbSet<Sala> Salas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
