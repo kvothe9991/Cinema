@@ -131,6 +131,8 @@
     <Compile Include="Controllers\EstadisticasController.cs" />
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorarioController.cs" />
+    <Compile Include="Controllers\SalaController.cs" />
     <Compile Include="Controllers\SocioController.cs" />
     <Compile Include="DAL\CineContext.cs" />
     <Compile Include="DAL\Initializer.cs" />
@@ -269,6 +271,16 @@
     <Content Include="Views\Estadisticas\Index.cshtml" />
     <Content Include="Views\CancelacionCompra\Index.cshtml" />
     <Content Include="Views\Estadisticas\Details.cshtml" />
+    <Content Include="Views\Horario\Create.cshtml" />
+    <Content Include="Views\Horario\Delete.cshtml" />
+    <Content Include="Views\Horario\Details.cshtml" />
+    <Content Include="Views\Horario\Edit.cshtml" />
+    <Content Include="Views\Horario\Index.cshtml" />
+    <Content Include="Views\Sala\Create.cshtml" />
+    <Content Include="Views\Sala\Delete.cshtml" />
+    <Content Include="Views\Sala\Details.cshtml" />
+    <Content Include="Views\Sala\Edit.cshtml" />
+    <Content Include="Views\Sala\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
