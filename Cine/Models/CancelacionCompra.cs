@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Cine.Models
 {
-    public class CancelacionCompraModel
+    public class CancelacionCompra
     {
         public int Id { get; set; }
         public bool Cancelable { get; set; }
