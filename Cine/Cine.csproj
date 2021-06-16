@@ -224,6 +224,12 @@
     <Content Include="Views\ListadoFilmesModel\Index.cshtml" />
     <Content Include="Views\Filme\Index.cshtml" />
     <Content Include="Views\Estadisticas\Index.cshtml" />
+    <Content Include="Views\Estadisticas\Details.cshtml" />
+    <Content Include="Views\Filme\Create.cshtml" />
+    <Content Include="Views\Filme\Delete.cshtml" />
+    <Content Include="Views\Filme\Details.cshtml" />
+    <Content Include="Views\Filme\Edit.cshtml" />
+    <Content Include="Views\Filme\Top.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
