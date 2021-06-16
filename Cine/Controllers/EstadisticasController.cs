@@ -22,12 +22,14 @@ namespace Cine.Controllers
         // GET: Estadisticas
         public ActionResult Index()
         {
+            var entradas = from s in db.Entradas
+                           select s;
             var summary = new Dictionary<string, int>()
             {
-                { "Día", db.Entradas.Count(s => s.HoraCompra == DateTime.Today) },
-                { "Mes", db.Entradas.Count(s => s.HoraCompra.Month == DateTime.Today.Month) },
-                { "Año", db.Entradas.Count(s => s.HoraCompra.Year == DateTime.Today.Year) },
-                { "Total", db.Entradas.Count() }
+                { "Día", entradas.Count(s => s.HoraCompra == DateTime.Today) },
+                { "Mes", entradas.Count(s => s.HoraCompra.Month == DateTime.Today.Month) },
+                { "Año", entradas.Count(s => s.HoraCompra.Year == DateTime.Today.Year) },
+                { "Total", entradas.Count() }
             };
             return View(summary);
         }
