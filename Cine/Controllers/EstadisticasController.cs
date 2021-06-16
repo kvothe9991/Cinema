@@ -7,11 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cine.DAL;
-using Cine.Data;
-using Cine.ViewModels;
+using Cine.Models;
 
 namespace Cine.Controllers
 {
+    public enum CriterioEst
+    {
+        Actor, Filme, Genero, Nacionalidad, Periodo, Rating
+    }
     public class EstadisticasController : Controller
     {
         private CineContext db = new CineContext();
@@ -29,22 +32,19 @@ namespace Cine.Controllers
             return View(summary);
         }
 
-        // POST: Estadisticas/Details
-        public ActionResult Details(EstadisticasFormModel form)
+        public ActionResult Details(CriterioEst criterio)
         {
             var entradas = from s in db.Entradas
                            select s;
             var filmes = from s in db.Filmes
                          select s;
-            CriterioEst criterio = form.criterio;
-
+            /*
             if (criterio == CriterioEst.Periodo) // periodo de fechas
             {
-                entradas = entradas.Where(
-                    s => s.HoraCompra >= form.desde && s.HoraCompra <= form.hasta
-                );
+                entradas = entradas.Where(s => s.HoraCompra >= ini && s.HoraCompra <= fini);
                 return View(entradas);
             }
+            */
 
             if (criterio == CriterioEst.Filme) // consultar por filme
             {
