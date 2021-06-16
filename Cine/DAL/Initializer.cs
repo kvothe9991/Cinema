@@ -25,7 +25,11 @@ namespace Cine.DAL
                         "David Strathairn",
                         "Linda May",
                         "Charlene Swankie"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -41,7 +45,11 @@ namespace Cine.DAL
                         "Lauren Ridloff",
                         "Mathieu Amalric",
                         "Chelsea Lee"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -55,7 +63,11 @@ namespace Cine.DAL
                         "LaKeith Stanfeild",
                         "Jesse Plemons",
                         "Dominique Fishback"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -69,7 +81,11 @@ namespace Cine.DAL
                         "Laurence Fishburne",
                         "Carrie-Anne Moss",
                         "Hugo Weaving"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -83,7 +99,11 @@ namespace Cine.DAL
                         "Chris Sarandon",
                         "Alex Vincent",
                         "Brad Dourif"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -99,7 +119,11 @@ namespace Cine.DAL
                         "Annia Bú Maure",
                         "Paula Alí",
                         "Mirtha Ibarra"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -113,7 +137,11 @@ namespace Cine.DAL
                         "Margarita Aguero",
                         "Frank González",
                         "Irela Bravo"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -126,7 +154,11 @@ namespace Cine.DAL
                         "Carmiña Martínez",
                         "Natalia Reyes",
                         "José Acosta"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -143,7 +175,11 @@ namespace Cine.DAL
                         "Natasha Lyonne",
                         "Thomas Ian Nicholas",
                         "Tara Reid"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 },
                 new Filme
                 {
@@ -161,7 +197,11 @@ namespace Cine.DAL
                         "Gil Bellows",
                         "Mark Rolston",
                         "James Whitmore"
-                    }
+                    },
+                    Calificacion = 8,
+                    Calificaciones = { 7, 8, 9},
+                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
+                    Salas = { 1, 2, 3}
                 }
             };
 
