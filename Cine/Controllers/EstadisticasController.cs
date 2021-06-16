@@ -7,14 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cine.DAL;
-using Cine.Models;
+using Cine.Data;
+using Cine.ViewModels;
 
 namespace Cine.Controllers
 {
-    public enum CriterioEst
-    {
-        Actor, Filme, Genero, Nacionalidad, Periodo, Rating
-    }
     public class EstadisticasController : Controller
     {
         private CineContext db = new CineContext();
@@ -32,19 +29,37 @@ namespace Cine.Controllers
             return View(summary);
         }
 
-        public ActionResult Details(CriterioEst criterio)
+        [HttpGet]
+        public ActionResult Details()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Details(EstadisticasFormModel form)
         {
             var entradas = from s in db.Entradas
                            select s;
             var filmes = from s in db.Filmes
                          select s;
-            /*
+            CriterioEst criterio = form.criterio;
+            EstadisticasShowModel showData = new EstadisticasShowModel
+            {
+                criterio = criterio
+            };
+
             if (criterio == CriterioEst.Periodo) // periodo de fechas
             {
-                entradas = entradas.Where(s => s.HoraCompra >= ini && s.HoraCompra <= fini);
-                return View(entradas);
+                int ventasPorPeriodo = entradas.Count(
+                    s => s.HoraCompra >= form.desde && s.HoraCompra <= form.hasta);
+                showData.data = new KeyValuePair<string, int>[]
+                {
+                    new KeyValuePair<string, int>(
+                        string.Format("{0} - {1}", form.desde, form.hasta),
+                        ventasPorPeriodo)
+                };
             }
-            */
+
 
             if (criterio == CriterioEst.Filme) // consultar por filme
             {
@@ -52,17 +67,17 @@ namespace Cine.Controllers
                                                f => f.Nombre,
                                                f => entradas.Count(e => e.Filme == f))
                                            .OrderByDescending(pair => pair.Value);
-                return View(ventasPorFilme);
+                showData.data = ventasPorFilme;
             }
 
             if (criterio == CriterioEst.Actor) // consultar por actor del filme
             {
-                var ventasPorActor = filmes.SelectMany(f => f.actores)
+                var ventasPorActor = filmes.Select(f => f.actor)
                                            .ToHashSet().ToDictionary(
                                                a => a,
-                                               a => entradas.Count(e => e.Filme.actores.Contains(a)))
+                                               a => entradas.Count(e => e.Filme.actor == a))
                                            .OrderByDescending(pair => pair.Value);
-                return View(ventasPorActor);
+                showData.data = ventasPorActor;
             }
 
             if (criterio == CriterioEst.Genero) // consultar por genero del filme
@@ -72,30 +87,35 @@ namespace Cine.Controllers
                                                 g => g,
                                                 g => entradas.Count(e => e.Filme.Genero == g))
                                             .OrderByDescending(pair => pair.Value);
-                return View(ventasPorGenero);
+                showData.data = ventasPorGenero;
             }
 
             if (criterio == CriterioEst.Rating) // consultar por rating del filme
             {
                 var ventasPorRating = new Dictionary<string, int>();
-                for (int i = 0; i <= 8; i+=2)
+                for (int i = 1; i <= 10; i++)
                 {
                     ventasPorRating.Add(
-                        string.Format("{0}-{1}", i, i+2),
-                        entradas.Count(e => i <= e.Filme.Calificacion && e.Filme.Calificacion < i+2)
-                    );
+                        string.Format("{0}", i),
+                        filmes.Count(f => (int)entradas.Where(e => e.Filme == f)
+                                                       .Select(e => e.Calificacion)
+                                                       .Average() == i));
                 }
-                return View(ventasPorRating);
+                showData.data = ventasPorRating;
             }
 
             if (criterio == CriterioEst.Nacionalidad) // comparacion entre cubano y extranjero
             {
                 int cubanas = filmes.Count(f => f.Pais == "Cuba"),
                     extranjeras = filmes.Count(f => f.Pais != "Cuba");
-                return View(new Tuple<int, int>(cubanas, extranjeras));
+                var ventasPorNacionalidad = new Dictionary<string, int>
+                {
+                    { "Cubanas", cubanas },
+                    { "Extranjeras", extranjeras }
+                };
+                showData.data = ventasPorNacionalidad;
             }
-
-            return View(/* un object con las estadisticas */);
+            return View("Show", showData);
         }
     }
 }

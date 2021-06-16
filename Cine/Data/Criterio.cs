@@ -5,6 +5,10 @@ using System.Web;
 
 namespace Cine.Data
 {
+    public enum CriterioEst
+    {
+        Actor, Filme, Genero, Nacionalidad, Periodo, Rating
+    }
     public enum Criterio
     {
         MasVistas, MasGustadas, InteresEconomico, Aleatorio

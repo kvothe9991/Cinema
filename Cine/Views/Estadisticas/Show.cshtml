@@ -1,0 +1,39 @@
+﻿@model IEnumerable<KeyValuePair<string, int>>
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            
+        </th>
+        <th>
+            
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calificacion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FilmeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FilmeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FilmeID })
+            </td>
+        </tr>
+    }
+
+</table>
