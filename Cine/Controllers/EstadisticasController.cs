@@ -22,7 +22,7 @@ namespace Cine.Controllers
             var summary = new Dictionary<string, int>()
             {
                 { "Día", db.Entradas.Count(s => s.HoraCompra == DateTime.Today) },
-                { "Mes", db.Entradas.Count(s => s.HoraCompra.Month == DateTime.Today.Month) },
+                { "Mes", db.Entradas.Count(s => s.HoraCompra.Year == DateTime.Today.Year && s.HoraCompra.Month == DateTime.Today.Month) },
                 { "Año", db.Entradas.Count(s => s.HoraCompra.Year == DateTime.Today.Year) },
                 { "Total", db.Entradas.Count() }
             };
@@ -36,13 +36,14 @@ namespace Cine.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Details(EstadisticasFormModel form)
         {
             var entradas = from s in db.Entradas
                            select s;
             var filmes = from s in db.Filmes
                          select s;
-            CriterioEst criterio = form.criterio;
+            CriterioEst criterio = form.Criterio;
             EstadisticasShowModel showData = new EstadisticasShowModel
             {
                 criterio = criterio
@@ -51,11 +52,11 @@ namespace Cine.Controllers
             if (criterio == CriterioEst.Periodo) // periodo de fechas
             {
                 int ventasPorPeriodo = entradas.Count(
-                    s => s.HoraCompra >= form.desde && s.HoraCompra <= form.hasta);
+                    s => s.HoraCompra >= form.Desde && s.HoraCompra <= form.Hasta);
                 showData.data = new KeyValuePair<string, int>[]
                 {
                     new KeyValuePair<string, int>(
-                        string.Format("{0} - {1}", form.desde, form.hasta),
+                        string.Format("{0} - {1}", form.Desde, form.Hasta),
                         ventasPorPeriodo)
                 };
             }
