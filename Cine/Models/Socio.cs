@@ -12,6 +12,6 @@ namespace Cine.Models
         public string DatosPersonales { get; set; }
         public string UsuarioDescuento { get; set; }
 
-        public ICollection<Filme> Filmes { get; set; }
+        public virtual ICollection<Filme> Filmes { get; set; }
     }
 }

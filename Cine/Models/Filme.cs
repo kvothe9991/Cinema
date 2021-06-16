@@ -17,6 +17,6 @@ namespace Cine.Models
         public List<int> Calificaciones { get; set; }
         public List<Tuple<int, int>> Horarios { get; set; } // HH:MM
         public List<int> Salas { get; set; }
-        public ICollection<Socio> Socios { get; set; }
+        public virtual ICollection<Socio> Socios { get; set; }
     }
 }
