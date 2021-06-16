@@ -8,6 +8,7 @@ namespace Cine.Models
     public class Sala
     {
         public int SalaID { get; set; }
-        public List<bool> Butacas { get; set; }
+
+        public virtual ICollection<Filme> Filmes { get; set; }
     }
 }

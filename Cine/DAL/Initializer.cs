@@ -11,6 +11,42 @@ namespace Cine.DAL
     {
         protected override void Seed(CineContext context)
         {
+            var horarios = new List<Horario>
+            {
+                new Horario
+                {
+                    HorarioID = 1,
+                    HH = 2,
+                    MM = 0
+                },
+                new Horario
+                {
+                    HorarioID = 2,
+                    HH = 6,
+                    MM = 0
+                }
+            };
+            horarios.ForEach(s => context.Horarios.Add(s));
+            context.SaveChanges();
+
+            var salas = new List<Sala>
+            {
+                new Sala
+                {
+                    SalaID = 1,
+                },
+                new Sala
+                {
+                    SalaID = 2,
+                },
+                new Sala
+                {
+                    SalaID = 3,
+                },
+            };
+            salas.ForEach(s => context.Salas.Add(s));
+            context.SaveChanges();
+
             var filmes = new List<Filme>
             {
                 new Filme
@@ -19,16 +55,7 @@ namespace Cine.DAL
                     Nombre = "Nomadland",
                     Genero = "Drama",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Frances McDormand",
-                        "David Strathairn",
-                        "Linda May",
-                        "Charlene Swankie"
-                    },
-                    Calificaciones = new List<int> { 4, 8, 2 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Frances McDormand"
                 },
                 new Filme
                 {
@@ -36,18 +63,7 @@ namespace Cine.DAL
                     Nombre = "Sound of Metal",
                     Genero = "Drama",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Riz Ahmed",
-                        "Olivia Cooke",
-                        "Paul Raci",
-                        "Lauren Ridloff",
-                        "Mathieu Amalric",
-                        "Chelsea Lee"
-                    },
-                    Calificaciones = new List<int> { 7, 10, 10 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Riz Ahmed",
                 },
                 new Filme
                 {
@@ -55,16 +71,7 @@ namespace Cine.DAL
                     Nombre = "Judas and The Black Messiah",
                     Genero = "Drama Histórico",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Daniel Kaluuya",
-                        "LaKeith Stanfeild",
-                        "Jesse Plemons",
-                        "Dominique Fishback"
-                    },
-                    Calificaciones = new List<int> { 2, 8, 9 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Daniel Kaluuya",
                 },
                 new Filme
                 {
@@ -72,16 +79,7 @@ namespace Cine.DAL
                     Nombre = "The Matrix",
                     Genero = "Ciencia Ficción",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Keanu Reeves",
-                        "Laurence Fishburne",
-                        "Carrie-Anne Moss",
-                        "Hugo Weaving"
-                    },
-                    Calificaciones = new List<int> { 10, 10, 10 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Keanu Reeves",
                 },
                 new Filme
                 {
@@ -89,16 +87,7 @@ namespace Cine.DAL
                     Nombre = "Child's Play",
                     Genero = "Terror",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Catherine Hicks",
-                        "Chris Sarandon",
-                        "Alex Vincent",
-                        "Brad Dourif"
-                    },
-                    Calificaciones = new List<int> { 7, 5, 9 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Catherine Hicks",
                 },
                 new Filme
                 {
@@ -106,18 +95,7 @@ namespace Cine.DAL
                     Nombre = "El Cuerno de la Abundancia",
                     Genero = "Comedia",
                     Pais = "Cuba",
-                    actores = new List<string>
-                    {
-                        "Jorge Perugorría",
-                        "Laura de la Uz",
-                        "Enrique Molina",
-                        "Annia Bú Maure",
-                        "Paula Alí",
-                        "Mirtha Ibarra"
-                    },
-                    Calificaciones = new List<int> { 7, 9, 9 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Jorge Perugorría",
                 },
                 new Filme
                 {
@@ -125,16 +103,7 @@ namespace Cine.DAL
                     Nombre = "Vampiros en La Habana",
                     Genero = "Animación",
                     Pais = "Cuba",
-                    actores = new List<string>
-                    {
-                        "Manuel Marín",
-                        "Margarita Aguero",
-                        "Frank González",
-                        "Irela Bravo"
-                    },
-                    Calificaciones = new List<int> { 9, 10, 10 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Manuel Marín",
                 },
                 new Filme
                 {
@@ -142,15 +111,7 @@ namespace Cine.DAL
                     Nombre = "Pájaros de Verano",
                     Genero = "Drama",
                     Pais = "Colombia",
-                    actores = new List<string>
-                    {
-                        "Carmiña Martínez",
-                        "Natalia Reyes",
-                        "José Acosta"
-                    },
-                    Calificaciones = new List<int> { 9, 8, 9 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Carmiña Martínez",
                 },
                 new Filme
                 {
@@ -158,19 +119,7 @@ namespace Cine.DAL
                     Nombre = "American Pie",
                     Genero = "Comedia Romántica",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Jason Biggs",
-                        "Shannon Elizabeth",
-                        "Alyson Hannigan",
-                        "Chris Klein",
-                        "Natasha Lyonne",
-                        "Thomas Ian Nicholas",
-                        "Tara Reid"
-                    },
-                    Calificaciones = new List<int> { 7, 7, 10 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "Jason Biggs",
                 },
                 new Filme
                 {
@@ -178,20 +127,7 @@ namespace Cine.DAL
                     Nombre = "The Shawshank Redemption",
                     Genero = "Drama",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "Tim Robbins",
-                        "Morgan Freeman",
-                        "Bob Gunton",
-                        "William Sadler",
-                        "Clancy Brown",
-                        "Gil Bellows",
-                        "Mark Rolston",
-                        "James Whitmore"
-                    },
-                    Calificaciones = new List<int>() { 7, 6, 9 },
-                    Horarios = new List<Tuple<int,int>>() { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int>() { 1, 2, 3 }
+                    actor = "Tim Robbins",
                 },
                 new Filme
                 {
@@ -199,13 +135,7 @@ namespace Cine.DAL
                     Nombre = "The Dark Knight Rises",
                     Genero = "Acción",
                     Pais = "Estados Unidos",
-                    actores = new List<string>
-                    {
-                        "George Clooney"
-                    },
-                    Calificaciones = new List<int> { 7, 6, 9 },
-                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
-                    Salas = new List<int> { 1, 2, 3 }
+                    actor = "George Clooney"
                 }
             };
 
