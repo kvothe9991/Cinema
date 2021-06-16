@@ -19,3 +19,5 @@ Cine/bin/Cine.pdb
 *.mdf
 *.ide-wal
 *.ide
+/packages
+/.vs

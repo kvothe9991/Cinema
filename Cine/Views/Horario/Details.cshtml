@@ -1,0 +1,35 @@
+﻿@model Cine.Models.Horario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Horario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HorarioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

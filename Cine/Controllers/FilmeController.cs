@@ -49,7 +49,7 @@ namespace Cine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FilmeID,Disponible,Calificacion")] Filme filme)
+        public ActionResult Create([Bind(Include = "FilmeID,Disponible,Nombre,Genero,Pais,actor")] Filme filme)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace Cine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FilmeID,Disponible,Calificacion")] Filme filme)
+        public ActionResult Edit([Bind(Include = "FilmeID,Disponible,Nombre,Genero,Pais,actor")] Filme filme)
         {
             if (ModelState.IsValid)
             {
