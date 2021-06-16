@@ -1,21 +1,5 @@
-@model Dictionary<string,int>
+@* @model "un object con las estadisticas" *@
 
 @{
-    ViewBag.Title = "Estadísticas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Estadísticas</h2>
-<div class="row row-cols-1 row-cols-md-2 g-4 p-2">
-   @foreach (var item in Model)
-    {
-         <div class="col">
-             <div class="card">
-                 <div class="card-body">
-                     <h5 class="card-title">@item.Key</h5>
-                     <p class="card-text">@item.Value</p>
-                 </div>
-             </div>
-         </div>
-    }
-</div>

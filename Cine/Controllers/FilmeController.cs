@@ -12,7 +12,6 @@ using Cine.Data;
 
 namespace Cine.Controllers
 {
-
     public class FilmeController : Controller
     {
         private CineContext db = new CineContext();

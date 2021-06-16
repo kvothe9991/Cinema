@@ -12,6 +12,6 @@ namespace Cine.Data
 
     public static class CriterioActual
     {
-        public static Criterio Criterio = Criterio.MasVistas;
+        public static Criterio Criterio = Criterio.MasNuevas;
     }
 }
