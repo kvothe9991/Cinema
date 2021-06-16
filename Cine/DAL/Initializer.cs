@@ -55,7 +55,17 @@ namespace Cine.DAL
                     Nombre = "Nomadland",
                     Genero = "Drama",
                     Pais = "Estados Unidos",
-                    actor = "Frances McDormand"
+                    actor = "Frances McDormand",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[1]
+                    }
                 },
                 new Filme
                 {
@@ -64,6 +74,16 @@ namespace Cine.DAL
                     Genero = "Drama",
                     Pais = "Estados Unidos",
                     actor = "Riz Ahmed",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -72,6 +92,16 @@ namespace Cine.DAL
                     Genero = "Drama Histórico",
                     Pais = "Estados Unidos",
                     actor = "Daniel Kaluuya",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[1]
+                    }
                 },
                 new Filme
                 {
@@ -80,6 +110,16 @@ namespace Cine.DAL
                     Genero = "Ciencia Ficción",
                     Pais = "Estados Unidos",
                     actor = "Keanu Reeves",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -88,6 +128,16 @@ namespace Cine.DAL
                     Genero = "Terror",
                     Pais = "Estados Unidos",
                     actor = "Catherine Hicks",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[1],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -96,6 +146,16 @@ namespace Cine.DAL
                     Genero = "Comedia",
                     Pais = "Cuba",
                     actor = "Jorge Perugorría",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[1]
+                    }
                 },
                 new Filme
                 {
@@ -104,6 +164,16 @@ namespace Cine.DAL
                     Genero = "Animación",
                     Pais = "Cuba",
                     actor = "Manuel Marín",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -112,6 +182,16 @@ namespace Cine.DAL
                     Genero = "Drama",
                     Pais = "Colombia",
                     actor = "Carmiña Martínez",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[1]
+                    }
                 },
                 new Filme
                 {
@@ -120,6 +200,16 @@ namespace Cine.DAL
                     Genero = "Comedia Romántica",
                     Pais = "Estados Unidos",
                     actor = "Jason Biggs",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[1],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -128,6 +218,16 @@ namespace Cine.DAL
                     Genero = "Drama",
                     Pais = "Estados Unidos",
                     actor = "Tim Robbins",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[1],
+                        salas[2]
+                    }
                 },
                 new Filme
                 {
@@ -135,7 +235,17 @@ namespace Cine.DAL
                     Nombre = "The Dark Knight Rises",
                     Genero = "Acción",
                     Pais = "Estados Unidos",
-                    actor = "George Clooney"
+                    actor = "George Clooney",
+                    Horarios = new List<Horario>
+                    {
+                        horarios[0],
+                        horarios[1]
+                    },
+                    Salas = new List<Sala>
+                    {
+                        salas[0],
+                        salas[2]
+                    }
                 }
             };
 
@@ -153,16 +263,18 @@ namespace Cine.DAL
                         filmes[2],
                         filmes[3],
                         filmes[9]
-                    }
+                    },
+                    UsuarioDescuento = "Jubilado"
                 },
                 new Socio
                 {
                     Puntos = 40,
                     Filmes = new List<Filme>
                     {
-                        filmes[0],
-                        filmes[7]
-                    }
+                        filmes[1],
+                        filmes[3]
+                    },
+                    UsuarioDescuento = "Jubilado"
                 },
                 new Socio
                 {
@@ -183,18 +295,81 @@ namespace Cine.DAL
                     Filmes = new List<Filme>
                     {
                         filmes[3],
-                        filmes[8],
+                        filmes[1],
                         filmes[9]
                     }
                 },
                 new Socio
                 {
                     Puntos = 0,
-                    Filmes = new List<Filme> {}
+                    Filmes = new List<Filme> {},
+                    UsuarioDescuento = "Estudiante"
                 }
             };
 
             socios.ForEach(s => context.Socios.Add(s));
+            context.SaveChanges();
+
+            var entradas = new List<Entrada>
+            {
+                new Entrada
+                {
+                    Socio = socios[3],
+                    Filme = filmes[1], //mismo filme
+                    Calificacion = 8,
+                    Precio = 20, //no recibe descuento
+                    HoraCompra = new DateTime(2020, 2, 10, 10, 30, 15),
+                    Horario = new DateTime(2020, 2, 10, 2, 0, 0),
+                    Sala = 1,
+                    Butaca = 10
+                },
+                new Entrada
+                {
+                    Socio = socios[1],
+                    Filme = filmes[1], //mismo filme
+                    Calificacion = 7,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 2, 10, 11, 35, 05),
+                    Horario = new DateTime(2020, 2, 10, 2, 0, 0),
+                    Sala = 1,
+                    Butaca = 12
+                },
+                new Entrada
+                {
+                    Socio = socios[3],
+                    Filme = filmes[3],
+                    Calificacion = 10,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2020, 5, 20, 12, 30, 00),
+                    Horario = new DateTime(2020, 5, 20, 10, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[0],
+                    Calificacion = 8,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 5, 5, 9, 30, 00),
+                    Horario = new DateTime(2020, 2, 10, 2, 0, 0),
+                    Sala = 1,
+                    Butaca = 5
+                },
+                 new Entrada
+                {
+                    Socio = socios[2],
+                    Filme = filmes[6],
+                    Calificacion = 6,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2020, 1, 10, 10, 30, 00),
+                    Horario = new DateTime(2020, 2, 10, 10, 0, 0),
+                    Sala = 3,
+                    Butaca = 1
+                }
+
+            };
+            entradas.ForEach(s => context.Entradas.Add(s));
             context.SaveChanges();
         }
     }
