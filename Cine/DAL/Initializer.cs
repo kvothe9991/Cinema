@@ -26,10 +26,9 @@ namespace Cine.DAL
                         "Linda May",
                         "Charlene Swankie"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 4, 8, 2 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -46,10 +45,9 @@ namespace Cine.DAL
                         "Mathieu Amalric",
                         "Chelsea Lee"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 7, 10, 10 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -64,10 +62,9 @@ namespace Cine.DAL
                         "Jesse Plemons",
                         "Dominique Fishback"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 2, 8, 9 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -82,14 +79,13 @@ namespace Cine.DAL
                         "Carrie-Anne Moss",
                         "Hugo Weaving"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 10, 10, 10 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
-                    Disponible = true,
+                    Disponible = false,
                     Nombre = "Child's Play",
                     Genero = "Terror",
                     Pais = "Estados Unidos",
@@ -100,10 +96,9 @@ namespace Cine.DAL
                         "Alex Vincent",
                         "Brad Dourif"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 7, 5, 9 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -120,10 +115,9 @@ namespace Cine.DAL
                         "Paula Alí",
                         "Mirtha Ibarra"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 7, 9, 9 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -138,10 +132,9 @@ namespace Cine.DAL
                         "Frank González",
                         "Irela Bravo"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 9, 10, 10 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -155,10 +148,9 @@ namespace Cine.DAL
                         "Natalia Reyes",
                         "José Acosta"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 9, 8, 9 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -176,10 +168,9 @@ namespace Cine.DAL
                         "Thomas Ian Nicholas",
                         "Tara Reid"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int> { 7, 7, 10 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 },
                 new Filme
                 {
@@ -198,10 +189,23 @@ namespace Cine.DAL
                         "Mark Rolston",
                         "James Whitmore"
                     },
-                    Calificacion = 8,
-                    Calificaciones = { 7, 8, 9},
-                    Horarios = { Tuple.Create (3, 30), Tuple.Create (6, 45), Tuple.Create (10, 00) },
-                    Salas = { 1, 2, 3}
+                    Calificaciones = new List<int>() { 7, 6, 9 },
+                    Horarios = new List<Tuple<int,int>>() { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int>() { 1, 2, 3 }
+                },
+                new Filme
+                {
+                    Disponible = true,
+                    Nombre = "The Dark Knight Rises",
+                    Genero = "Acción",
+                    Pais = "Estados Unidos",
+                    actores = new List<string>
+                    {
+                        "George Clooney"
+                    },
+                    Calificaciones = new List<int> { 7, 6, 9 },
+                    Horarios = new List<Tuple<int,int>> { Tuple.Create(3, 30), Tuple.Create(6, 45), Tuple.Create(10, 00) },
+                    Salas = new List<int> { 1, 2, 3 }
                 }
             };
 
