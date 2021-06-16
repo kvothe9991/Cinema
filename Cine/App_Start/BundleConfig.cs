@@ -14,13 +14,16 @@ namespace Cine
         public static void StyleBundle(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/css")
-                   .Include("~/Content/bootstrap.css"));
+                   .Include("~/Content/bootstrap.css",
+                            "~/Content/jquery-ui-1.12.1.min.css"));
         }
 
         public static void ScriptBundle(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/js")
-                   .Include("~/Scripts/bootstrap.js"));
+                   .Include("~/Scripts/bootstrap.js",
+                            "~/Scripts/jquery-{version}.js",
+                            "~/Scripts/jquery-ui-1.12.1.js"));
         }
     }
 }
