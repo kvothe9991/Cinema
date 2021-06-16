@@ -7,7 +7,7 @@ using Cine.Models;
 
 namespace Cine.DAL
 {
-    public class Initializer : DropCreateDatabaseIfModelChanges<CineContext>
+    public class Initializer : DropCreateDatabaseAlways<CineContext>
     {
         protected override void Seed(CineContext context)
         {
