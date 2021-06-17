@@ -22,9 +22,25 @@ namespace Cine.Controllers
 
             CancelacionCompra ccm = new CancelacionCompra { };
 
-            // Ricardo le mete query a db buscando id
-            // cancela la compra
-            // setea ccm
+            Entrada entrada = db.Entradas.Find(id);
+            if (entrada == null)
+            {
+                ccm.Cancelable = false;
+                ccm.Encontrado = false;
+            }
+            else
+            {
+                ccm.Encontrado = true;
+                if((DateTime.Now - entrada.Horario).Hours > 2)
+                {
+                    ccm.Cancelable = true;
+                    db.Entradas.Remove(entrada);
+                }
+                else
+                {
+                    ccm.Cancelable = false;
+                }
+            }
 
             return View(ccm);
         }
