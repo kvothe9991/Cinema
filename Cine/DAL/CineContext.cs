@@ -20,6 +20,8 @@ namespace Cine.DAL
         
         public DbSet<Sala> Salas { get; set; }
 
+        public DbSet<Horario> Horarios { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

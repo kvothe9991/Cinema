@@ -141,16 +141,35 @@ namespace Cine.Controllers
                 }
                 vistas.OrderBy(s => s.Value);
                 vistas.Reverse();
-                filmes = (IQueryable<Filme>) new List<Filme>();
-
-                foreach(var v in vistas.Take(10))
-                {
-                    filmes.Append(db.Filmes.Find(v.Key));
-                }
+                
+                return View(vistas.Take(10));
             }
             else if(CriterioActual.Criterio == Criterio.MasGustadas) //las + gustadas
             {
-                filmes = filmes.OrderBy(s => s.Calificacion);
+                var entradas = from s in db.Entradas
+                               select s;
+
+                entradas = entradas.Where(s => filmes.Contains(s.Filme));
+                Dictionary<int, List <int>> cal = new Dictionary<int, List <int>>(); //<FilmeId, calificaciones>;
+
+                foreach (var e in entradas)
+                {
+                    if (!cal.ContainsKey(e.FilmeID))
+                        cal.Add(e.FilmeID, new List<int>());
+                    cal[e.FilmeID].Append(e.Calificacion);
+                }
+
+                Dictionary<int, int> gustadas = new Dictionary<int, int>(); //<FilmeId, calificacion>;
+
+                foreach(var f in cal)
+                {
+                    gustadas.Add(f.Key, f.Value.Sum() / f.Value.Count);
+                }
+                gustadas.OrderBy(s => s.Value);
+                gustadas.Reverse();
+
+                return View(gustadas.Take(10));
+
             }
             else if(CriterioActual.Criterio == Criterio.InteresEconomico) // intereses economicos
             {
@@ -167,11 +186,7 @@ namespace Cine.Controllers
                 }
                 vistas.OrderBy(s => s.Value);
                 vistas.Reverse();
-                filmes = (IQueryable<Filme>)new List<Filme>();
-                foreach (var v in vistas.Take(10))
-                {
-                    filmes.Append(db.Filmes.Find(v.Key));
-                }
+                return View(vistas.Take(10));
             }
             else if(CriterioActual.Criterio == Criterio.Aleatorio) //aleatorio
             {
@@ -185,11 +200,8 @@ namespace Cine.Controllers
                     list[i] = list[rint];
                     list[rint] = filmet;
                 }
-                filmes = (IQueryable<Filme>)new List<Filme>();
-                foreach (var x in list.Take(10))
-                {
-                    filmes.Append(x);
-                }
+
+                return View(list.Take(10));
             }
             
             return View(new Tuple<ICollection<Filme>, Criterio>((ICollection<Filme>)filmes, CriterioActual.Criterio));
