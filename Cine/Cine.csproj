@@ -141,6 +141,7 @@
     <Compile Include="Models\CancelacionCompra.cs" />
     <Compile Include="Models\Entrada.cs" />
     <Compile Include="Models\Filme.cs" />
+    <Compile Include="Models\Horario.cs" />
     <Compile Include="Models\ListadoFilmesModel.cs" />
     <Compile Include="Models\Sala.cs" />
     <Compile Include="Models\Socio.cs" />

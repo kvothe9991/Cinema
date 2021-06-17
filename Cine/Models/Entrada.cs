@@ -12,6 +12,7 @@ namespace Cine.Models
         public virtual Socio Socio { get; set; }
         public int FilmeID { get; set; }
         public virtual Filme Filme { get; set; }
+        public int Calificacion { get; set; }
 
         public int Precio { get; set; }
         public DateTime HoraCompra { get; set; }
