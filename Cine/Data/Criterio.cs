@@ -10,6 +10,11 @@ namespace Cine.Data
         MasVistas, MasGustadas, InteresEconomico, Aleatorio
     }
 
+    public enum CriterioEst
+    {
+        Actor, Filme, Genero, Nacionalidad, Periodo, Rating
+    }
+
     public static class CriterioActual
     {
         public static Criterio Criterio = Criterio.MasVistas;
