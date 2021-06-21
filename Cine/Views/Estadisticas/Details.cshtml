@@ -8,33 +8,59 @@
 @using (Html.BeginForm("Details", "Estadisticas", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="container">
-        <div class="row p-2">
+    <div class="container border-1">
+        <div class="form-group">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="form-label">Estadística a mostrar:</label>
             @Html.DropDownListFor(
                model => model.Criterio,
                EnumHelper.GetSelectList(typeof(Cine.Data.CriterioEst)),
-               "Seleccione una estadística a mostrar...",
-               new {
-                   htmlAttributes = new {
-                       @class = "form-control"
+               new
+                    {
+                       @class = "form-control",
+                       @id = "dropdown"
                    }
-               }
             )
         </div>
-        <div id="dates" class="row p-2 text-center">
-            <div class="col">
-                @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @type = "date" } })
-            </div>
-            <div class="col">
-                @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @type = "date" } })
+        <div id="dates" class="row py-3">
+            <div class="container">
+                <label class="form-label">Intervalo de fechas:</label>
+                <div id="dates" class="row px-5">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-label">Desde:</label>
+                            @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-label">Hasta:</label>
+                            @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-md-offset-2 col-md-10">
+        <div class="row py-2 text-center">
+            <div class="col">
                 <input type="submit" value="Mostrar" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
+<script>
+    const dropdown = document.getElementById('dropdown');
+    const dates = document.getElementById('dates');
+
+    dates.style.display = "none";
+
+    dropdown.addEventListener('change', () => {
+        if (dropdown.value !== '4') {
+            dates.style.display = "none";
+        }
+        else {
+            dates.style.display = "flex"
+        }
+    });
+</script>

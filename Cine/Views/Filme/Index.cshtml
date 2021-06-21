@@ -25,7 +25,8 @@
             @Html.DisplayNameFor(model => model.Pais)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.actor)
+            @*@Html.DisplayNameFor(model => model.actor)*@
+            Actor
         </th>
         <th></th>
     </tr>
@@ -34,19 +35,19 @@
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
+            @item.Nombre
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Disponible)
+            @item.Disponible
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.Genero)
+            @item.Genero
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.Pais)
+            @item.Pais
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.actor)
+            @item.actor
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.FilmeID }) |

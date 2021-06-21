@@ -1,0 +1,220 @@
+﻿@model Cine.ViewModels.CompraViewModel
+
+@{
+    ViewBag.Title = "Comprar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Tickets para <i>@Model.FilmeElegido.Nombre</i></h2>
+
+@using (Html.BeginForm())
+{
+    <div id="mainContainerCompra">
+        <div id="seatSelectorContainer" class="pt-3"></div>
+        <div id="form">
+            <!-- HIDDEN VALUES -->
+            <div hidden="hidden">
+                @Html.EditorForModel()
+                @Html.EditorFor(m => m.FilmeElegido)
+            </div>
+            <!-- Cantidad de Entradas -->
+            <div class="form-group">
+                @Html.HiddenFor(model => Model.Cantidad,
+                                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.Cantidad, "",
+                                new { @class = "text-danger" })
+            </div>
+
+            <!-- Seleccionador de Pago -->
+            <div class="form-group pt-3">
+                @Html.CheckBoxFor(model => model.EsSocio, new { @id = "metodo" })
+                @Html.DisplayNameFor(model => model.EsSocio)
+            </div>
+
+            <!-- Formas de Pago -->
+            <div class="form-group pb-2 pt-1">
+                <div class="row">
+
+                    <!-- Tarjeta de Credito -->
+                    <div id="credito" class="col">
+                        @Html.DisplayNameFor(model => model.TarjetaCredito)
+                        @Html.EditorFor(model => model.TarjetaCredito, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TarjetaCredito, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Id de Socio -->
+                    <div id="id_socio" class="col">
+                        @Html.DisplayNameFor(model => model.IdSocio)
+                        @Html.EditorFor(model => model.IdSocio, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IdSocio, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Forma de Descuento -->
+                    <div class="form-group pt-2 pb-4">
+                        @Html.DisplayNameFor(model => model.DiscountType)
+                        @foreach (var fd in EnumHelper.GetSelectList(typeof(Cine.Data.TipoDescuento)))
+                        {
+                            <div class="form-check">
+                                @Html.RadioButtonFor(model => model.DiscountType, fd,
+                                                    (fd.Text == "Ninguno")
+                                                    ? new { Checked = "checked", @id = "no_discount" }
+                                                    : null)
+                                @Html.DisplayName(fd.Text)
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Salas y Horarios -->
+                <div class="col">
+                    <div class="form-group">
+                        @Html.DisplayNameFor(model => model.SalaSeleccionada)
+                        @Html.DropDownListFor(model => model.SalaSeleccionada,
+                                              new SelectList(Model.FilmeElegido.Salas),
+                                              new { @id = "salas" })
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(model => model.Horario)
+                        @Html.DropDownListFor(model => model.Horario,
+                                              new SelectList(Model.FilmeElegido.Horarios),
+                                              new { @id = "horarios" })
+                    </div>
+                </div>
+            </div>
+            
+
+            <span id="price"></span>
+
+            <!-- Botón de Submit -->
+            <div class="form-group py-3">
+                <input type="submit" id="comprar" value="Comprar" class="btn btn-secondary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    // Initializations:
+    const check = document.getElementById('metodo');
+    const no_discount = document.getElementById('no_discount');
+    const tarjeta = document.getElementById('credito');
+    const id_socio = document.getElementById('id_socio');
+    const seats = document.getElementById('seatSelectorContainer');
+    const salas = document.getElementById('salas');
+    const horarios = document.getElementById('horarios');
+    let reservedSeats = [];
+    checkChecked();
+    updateSalas();
+    
+
+    function updateSalas() {
+        var seatCounts = @Html.Raw(Json.Encode(Model.FilmeElegido.Salas.Select(sala => sala.Asientos)));
+        var occupied = @Html.Raw(Json.Encode(Model.FilmeElegido.Salas.Select(sala => sala.AsientosOcupados)));
+        createCinemaSeatsComponent(seats, seatCounts[salas.selectedIndex], occupied[salas.selectedIndex]);
+        reservedSeats = [];
+    }
+
+    // Listeners:
+    document.getElementById('comprar').addEventListener('click', () => {
+        document.getElementById('Cantidad').value = getTakenSeats().length;
+    });
+
+    salas.addEventListener('change', () => {
+        updateSalas();
+        update_total_price();
+    })
+
+    check.addEventListener('change', () => {
+        checkChecked();
+        update_total_price();
+    });
+
+    no_discount.addEventListener('change', () => {
+        update_total_price();
+    });
+
+    document.getElementsByName('DiscountType')
+            .forEach(ele => { ele.addEventListener('click', () => update_total_price()) });
+
+    function checkChecked() {
+        if (check.checked) {
+            tarjeta.style.display = "none";
+            id_socio.style.display = "block";
+        } else {
+            tarjeta.style.display = "block";
+            id_socio.style.display = "none";
+        }
+    }
+
+
+    // Seats:
+    function createCinemaSeatsComponent(container, totalSeats, occupiedSeats) {
+        container.innerHTML = '';
+
+        const seat = `<img src="@Url.Content("~/Content/Images/seat.png")" class="seat" data-available="available" alt="seat">`;
+        let lastRow = document.createElement('div');
+        lastRow.classList.add('seatRow');
+
+        let actualSeat = 1;
+        let takenSeats = 0;
+
+        for (let i = 0; i < totalSeats; i++) {
+            if (actualSeat <= totalSeats) {
+                lastRow.innerHTML += seat;
+            }
+            if (actualSeat % 10 === 0) {
+                container.append(lastRow);
+                lastRow = document.createElement('div');
+                lastRow.classList.add('seatRow');
+            }
+            actualSeat++;
+        }
+
+        if (lastRow.innerHTML !== '') {
+            container.append(lastRow);
+        }
+
+        const seats = document.getElementsByClassName('seat');
+
+        for (let i = 0; i < seats.length; i++) {
+            seats[i].addEventListener('click', (event) => {
+                if (event.target.getAttribute('data-available') === 'available') {
+                    event.target.setAttribute('src', "@Url.Content("~/Content/Images/seat_taken.png")");
+                    event.target.setAttribute('data-available', 'taken');
+                    reservedSeats.push(i + 1);
+                }
+                else if (event.target.getAttribute('data-available') === 'taken') {
+                    event.target.setAttribute('src', "@Url.Content("~/Content/Images/seat.png")");
+                    event.target.setAttribute('data-available', 'available');
+                    reservedSeats.splice(reservedSeats.indexOf(i + 1), 1);
+                }
+                update_total_price();
+            });
+        }
+
+        occupiedSeats.forEach(seatPos => {
+            seats[seatPos - 1].setAttribute('src', "@Url.Content("~/Content/Images/seat_unavailable.png")");
+            seats[seatPos - 1].setAttribute('data-available', 'unavailable');
+        });
+    }
+
+    function getTakenSeats() {
+        return reservedSeats;
+    }
+
+
+    // Price:
+    function update_total_price() {
+        price = no_discount.checked ? 20 : 18;
+        total = getTakenSeats().length * price;
+        expression = (check.checked) ? total + ' Puntos' : (total/10) + '$'
+        document.getElementById('price').innerHTML = expression
+    }
+
+</script>

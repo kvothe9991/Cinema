@@ -61,7 +61,6 @@ namespace Cine.Controllers
                 };
             }
 
-
             if (criterio == CriterioEst.Filme) // consultar por filme
             {
                 var ventasPorFilme = filmes.ToDictionary(

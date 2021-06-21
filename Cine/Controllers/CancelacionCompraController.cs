@@ -15,33 +15,32 @@ namespace Cine.Controllers
         private CineContext db = new CineContext();
 
         // GET: CancelacionCompra
-        public ActionResult Index(int? id)
+        [HttpGet]
+        public ActionResult Index()
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            TempData["Result"] = null;
+            return View();
+        }
 
-            CancelacionCompra ccm = new CancelacionCompra { };
-
-            Entrada entrada = db.Entradas.Find(id);
-            if (entrada == null)
+        // POST: CancelacionCompra
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(CancelacionCompra ccm)
+        {
+            if (ModelState.IsValid)
             {
-                ccm.Cancelable = false;
-                ccm.Encontrado = false;
-            }
-            else
-            {
-                ccm.Encontrado = true;
-                if((DateTime.Now - entrada.Horario).Hours > 2)
-                {
-                    ccm.Cancelable = true;
-                    db.Entradas.Remove(entrada);
-                }
-                else
-                {
-                    ccm.Cancelable = false;
-                }
-            }
+                Entrada entrada = db.Entradas.Find(ccm.Id);
+                ccm.Encontrado = entrada != null;
 
+                if (ccm.Encontrado)
+                {
+                    ccm.Cancelable = (DateTime.Now - entrada.Horario).Hours > 2;
+                    if (ccm.Cancelable)
+                        db.Entradas.Remove(entrada);
+                }
+
+                TempData["Result"] = ccm;
+            }
             return View(ccm);
         }
     }
