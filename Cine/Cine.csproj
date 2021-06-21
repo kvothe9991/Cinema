@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CancelacionCompraController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\EstadisticasController.cs" />
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="DAL\CineContext.cs" />
     <Compile Include="DAL\Initializer.cs" />
     <Compile Include="Data\Criterio.cs" />
+    <Compile Include="Data\Pago.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +150,7 @@
     <Compile Include="Models\Sala.cs" />
     <Compile Include="Models\Socio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CompraViewModel.cs" />
     <Compile Include="ViewModels\EstadisticasFormModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +170,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\corn1.png" />
+    <Content Include="Content\Images\corn2.png" />
+    <Content Include="Content\Images\corn3.png" />
+    <Content Include="Content\Images\popcorn.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -239,6 +246,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\fonts\FjallaOne-Regular.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -252,6 +260,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\Images\seat.png" />
+    <Content Include="Content\Images\seat_taken.png" />
+    <Content Include="Content\Images\seat_unavailable.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -263,10 +274,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ListadoFilmesModel\Index.cshtml" />
     <Content Include="Views\Filme\Index.cshtml" />
     <Content Include="Views\Estadisticas\Index.cshtml" />
     <Content Include="Views\CancelacionCompra\Index.cshtml" />
@@ -291,6 +299,10 @@
     <Content Include="Views\Socio\Details.cshtml" />
     <Content Include="Views\Socio\Edit.cshtml" />
     <Content Include="Views\Socio\Index.cshtml" />
+    <Content Include="Views\Estadisticas\Show.cshtml" />
+    <Content Include="Views\Compra\Comprar.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
+    <Content Include="Views\Compra\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
