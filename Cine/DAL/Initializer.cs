@@ -34,14 +34,17 @@ namespace Cine.DAL
                 new Sala
                 {
                     SalaID = 1,
+                    Asientos = 20
                 },
                 new Sala
                 {
                     SalaID = 2,
+                    Asientos = 30
                 },
                 new Sala
                 {
                     SalaID = 3,
+                    Asientos = 35
                 },
             };
             salas.ForEach(s => context.Salas.Add(s));

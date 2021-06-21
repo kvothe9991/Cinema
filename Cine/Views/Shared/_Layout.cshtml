@@ -5,31 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Cine++</title>
     @Styles.Render("~/css")
-    @Scripts.Render("~/bundles/jquery")
+    
+
+    <style>
+    #main-container {
+        padding-top: 3rem;
+    }
+
+
+    #mainContainerCompra {
+        display: flex;
+        margin-top: 2rem;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+
+    @@font-face {
+        font-family: FjallaOne-Regular;
+        src: url("./Content/fonts/FjallaOne-Regular.ttf") format('truetype');
+    }
+
+    @@keyframes float {
+        0% {
+            transform: translatey(0);
+        }
+
+        50% {
+            transform: translatey(-20px);
+        }
+
+        100% {
+            transform: translatey(0);
+        }
+    }
+
+    * {
+        color: white
+    }
+
+    body {
+        background-color: black;
+        color: white;
+        overflow: hidden;
+    }
+
+    #title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10rem;
+        font-family: FjallaOne-Regular, serif;
+    }
+
+    #nav-title {
+        font-family: FjallaOne-Regular, serif;
+        font-size: 2rem;
+    }
+
+    #plus {
+        margin-top: -7rem;
+    }
+
+    #container {
+        margin: -10rem auto 0 auto;
+        width: 50rem;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #popcorn {
+        position: absolute;
+        bottom: -10rem;
+        right: -10rem;
+        width: 35rem;
+        height: 35rem;
+        transform: rotate(-25deg);
+    }
+
+    .corn {
+        height: 20rem;
+        width: 20rem;
+        position: absolute;
+    }
+
+    #corn1 {
+        bottom: 22rem;
+        right: 0;
+        width: 10rem;
+        height: 10rem;
+        animation: float 7s ease-in-out infinite;
+        animation-delay: 1s;
+    }
+
+    #corn2 {
+        bottom: 10rem;
+        right: 32rem;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    #corn3 {
+        z-index: -1;
+        bottom: -5rem;
+        right: 15rem;
+        animation: float 5s ease-in-out infinite;
+        animation-delay: 1s;
+    }
+
+    #about {
+        margin-top: -4rem;
+        width: 20rem;
+    }
+
+    #description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #showCatalog {
+        margin-top: 2rem;
+        border: 1px #b33c3c solid;
+        -webkit-box-shadow: 0 0 15px 0 #b33c3c;
+        box-shadow: 0 0 15px 0 #b33c3c;
+        padding: .3rem 1rem;
+        border-radius: .3rem;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+        #showCatalog:hover {
+            -webkit-box-shadow: 0 0 33px 0 #b33c3c;
+            box-shadow: 0 0 33px 0 #b33c3c;
+        }
+
+    #titleSpan {
+        font-family: FjallaOne-Regular, serif;
+        font-weight: bolder;
+        font-size: 1.1rem;
+    }
+
+
+    #form {
+        width: 30rem;
+    }
+
+    .seat {
+        width: 3rem;
+    }
+
+    .seatRow {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar {
+        background: rgb(2,0,36);
+        background: linear-gradient(180deg, black 0%, rgba(1,1,8,1) 80%, #b33c3c 100%);
+        -webkit-box-shadow: 0px 12px 38px 10px #b33c3c;
+        box-shadow: 0px 0px 50px 10px #b33c3c;
+    }
+
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar navbar-expand navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Cine++</a>
+            <a id="nav-title" class="navbar-brand" href="/">Cine++</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Socios", "Index", "Socios", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Filme", "Index", "Filme", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Catálogo", "Index", "Compra", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Estadísticas", "Index", "Estadisticas", null, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </div>
     @RenderSection("scripts", required: false)
-    <div class="container">
+    <div class="container" id="main-container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Cine++</p>
-        </footer>
     </div>
-
+    @Scripts.Render("~/js")
 </body>
 </html>
