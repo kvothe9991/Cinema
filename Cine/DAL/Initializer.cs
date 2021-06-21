@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -67,7 +67,8 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[0],
-                        salas[1]
+                        salas[1],
+                        salas[2]
                     }
                 },
                 new Filme
@@ -85,6 +86,7 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[0],
+                        salas[1],
                         salas[2]
                     }
                 },
@@ -103,7 +105,8 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[0],
-                        salas[1]
+                        salas[1],
+                        salas[2]
                     }
                 },
                 new Filme
@@ -139,7 +142,7 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[1],
-                        salas[2]
+                        salas[2],
                     }
                 },
                 new Filme
@@ -157,7 +160,8 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[0],
-                        salas[1]
+                        salas[1],
+                        salas[2]
                     }
                 },
                 new Filme
@@ -193,7 +197,8 @@ namespace Cine.DAL
                     Salas = new List<Sala>
                     {
                         salas[0],
-                        salas[1]
+                        salas[1],
+                        salas[2]
                     }
                 },
                 new Filme
@@ -263,10 +268,16 @@ namespace Cine.DAL
                     Filmes = new List<Filme>
                     {
                         filmes[0],
+                        filmes[1],
                         filmes[2],
                         filmes[3],
+                        filmes[4],
+                        filmes[5],
+                        filmes[6],
+                        filmes[7],
+                        filmes[8],
                         filmes[9]
-                    },
+                    }, 
                     UsuarioDescuento = "Jubilado"
                 },
                 new Socio
@@ -340,9 +351,9 @@ namespace Cine.DAL
                 new Entrada
                 {
                     Socio = socios[3],
-                    Filme = filmes[3],
+                    Filme = filmes[3], 
                     Calificacion = 10,
-                    Precio = 20,
+                    Precio = 20, 
                     HoraCompra = new DateTime(2020, 5, 20, 12, 30, 00),
                     Horario = new DateTime(2020, 5, 20, 10, 0, 0),
                     Sala = 3,
@@ -355,22 +366,197 @@ namespace Cine.DAL
                     Calificacion = 8,
                     Precio = 18, //recibe descuento por jubilado
                     HoraCompra = new DateTime(2020, 5, 5, 9, 30, 00),
-                    Horario = new DateTime(2020, 2, 10, 2, 0, 0),
+                    Horario = new DateTime(2020, 5, 10, 2, 0, 0),
                     Sala = 1,
                     Butaca = 5
                 },
-                 new Entrada
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[0],
+                    Calificacion = 8,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 6, 5, 9, 30, 00),
+                    Horario = new DateTime(2020, 6, 10, 2, 0, 0),
+                    Sala = 2,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[0],
+                    Calificacion = 8,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 6, 5, 9, 30, 00),
+                    Horario = new DateTime(2020, 6, 10, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
                 {
                     Socio = socios[2],
                     Filme = filmes[6],
                     Calificacion = 6,
                     Precio = 20,
                     HoraCompra = new DateTime(2020, 1, 10, 10, 30, 00),
-                    Horario = new DateTime(2020, 2, 10, 10, 0, 0),
+                    Horario = new DateTime(2020, 1, 10, 10, 0, 0),
                     Sala = 3,
                     Butaca = 1
-                }
-
+                },
+                new Entrada
+                {
+                    Socio = socios[2],
+                    Filme = filmes[0],
+                    Calificacion = 10,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2021, 3, 12, 9, 35, 00),
+                    Horario = new DateTime(2021, 3, 12, 10, 0, 0),
+                    Sala = 1,
+                    Butaca = 10
+                },
+                new Entrada
+                {
+                    Socio = socios[2],
+                    Filme = filmes[4],
+                    Calificacion = 8,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2021, 3, 13, 10, 00, 00),
+                    Horario = new DateTime(2021, 3, 13, 10, 0, 0),
+                    Sala = 3,
+                    Butaca = 15
+                },
+                new Entrada
+                {
+                    Socio = socios[2],
+                    Filme = filmes[5],
+                    Calificacion = 10,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2021, 5, 5, 12, 30, 00),
+                    Horario = new DateTime(2021, 5, 5, 10, 0, 0),
+                    Sala = 2,
+                    Butaca = 2
+                },
+                new Entrada
+                {
+                    Socio = socios[2],
+                    Filme = filmes[7],
+                    Calificacion = 10,
+                    Precio = 20,
+                    HoraCompra = new DateTime(2021, 5, 10, 10, 30, 00),
+                    Horario = new DateTime(2021, 5, 10, 10, 0, 0),
+                    Sala = 1,
+                    Butaca = 12
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[1],
+                    Calificacion = 5,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 6, 3, 9, 30, 00),
+                    Horario = new DateTime(2020, 6, 3, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[2],
+                    Calificacion = 7,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 5, 10, 9, 30, 00),
+                    Horario = new DateTime(2021, 5, 10, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[3],
+                    Calificacion = 10,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2020, 6, 6, 9, 30, 00),
+                    Horario = new DateTime(2020, 6, 6, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[4],
+                    Calificacion = 9,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 2, 20, 9, 30, 00),
+                    Horario = new DateTime(2021, 2, 20, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[5],
+                    Calificacion = 9,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 3, 25, 9, 30, 00),
+                    Horario = new DateTime(2021, 3, 25, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[6],
+                    Calificacion = 7,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 1, 10, 9, 30, 00),
+                    Horario = new DateTime(2021, 1, 10, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[7],
+                    Calificacion = 6,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 3, 5, 9, 30, 00),
+                    Horario = new DateTime(2021, 3, 5, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[8],
+                    Calificacion = 6,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 4, 5, 9, 30, 00),
+                    Horario = new DateTime(2021, 4, 5, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[8],
+                    Calificacion = 10,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 3, 22, 9, 30, 00),
+                    Horario = new DateTime(2021, 3, 22, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
+                new Entrada
+                {
+                    Socio = socios[0],
+                    Filme = filmes[9],
+                    Calificacion = 10,
+                    Precio = 18, //recibe descuento por jubilado
+                    HoraCompra = new DateTime(2021, 5, 27, 9, 30, 00),
+                    Horario = new DateTime(2021, 5, 27, 2, 0, 0),
+                    Sala = 3,
+                    Butaca = 5
+                },
             };
             entradas.ForEach(s => context.Entradas.Add(s));
             context.SaveChanges();
