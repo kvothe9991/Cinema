@@ -9,6 +9,19 @@ namespace Cine
 {
     public partial class Login : System.Web.UI.Page
     {
+        protected void Redirect(object sender, EventArgs e)
+        {
+            if (User.Identity.IsAuthenticated)
+                Response.Redirect("~/Admin");
+            else
+                Response.Redirect("~/Login.aspx");
+        }
+
+        protected void Register(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Register.aspx");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,10 +31,13 @@ namespace Cine
                     StatusText.Text = string.Format("Hello {0}!!", User.Identity.GetUserName());
                     LoginStatus.Visible = true;
                     LogoutButton.Visible = true;
+                    Redirector.Visible = true;
+                    //Response.Redirect("~/Admin");
                 }
                 else
                 {
                     LoginForm.Visible = true;
+                    BeforeLogin.Visible = true;
                 }
             }
         }
@@ -38,7 +54,7 @@ namespace Cine
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
 
                 authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, userIdentity);
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Admin");
             }
             else
             {
@@ -52,6 +68,11 @@ namespace Cine
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
             Response.Redirect("~/Login.aspx");
+        }
+
+        protected void NotAdmin(object sender, EventArgs e)
+        {
+            Response.Redirect("~/");
         }
     }
 }

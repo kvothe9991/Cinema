@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container p-5">
+    <div class="row row-cols-1 row-cols-lg-3">
+        <div class="col p-1">
+            <!-- Estadisticas -->
+            <div class="card bg-dark text-white h-100" style="border-color:#b33c3c">
+                <div class="card-body">
+                    <h5 class="card-title">Estadísticas</h5>
+                    <p class="card-text">
+                        Aquí se puede observar un dashboard de las estadísticas generales del cine.
+                        Adicionalmente es posible acceder a datos de ventas más específicos.
+                    </p>
+                    <a href="~/Estadisticas" class="btn text-white" style="background-color:#b33c3c">Acceder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col p-1">
+            <!-- Socios -->
+            <div class="card bg-dark text-white h-100" style="border-color:#b33c3c">
+                <div class="card-body">
+                    <h5 class="card-title">Socios</h5>
+                    <p class="card-text">Aquí se puede observar un listado de todos los socios actuales.</p>
+                    <a href="~/Socio" class="btn text-white" style="background-color:#b33c3c">Acceder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col p-1">
+            <!-- Filmes -->
+            <div class="card bg-dark text-white h-100" style="border-color:#b33c3c">
+                <div class="card-body">
+                    <h5 class="card-title">Filmes</h5>
+                    <p class="card-text">
+                        Aquí se puede observar un listado de todos los filmes, disponibles o no.
+                        Estos se pueden modificar o eliminar.
+                    </p>
+                    <a href="~/Filme" class="btn text-white" style="background-color:#b33c3c">Acceder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col p-1">
+            <!-- Salas -->
+            <div class="card bg-dark text-white h-100" style="border-color:#b33c3c">
+                <div class="card-body">
+                    <h5 class="card-title">Salas</h5>
+                    <p class="card-text">
+                        Aquí se puede observar un listado de todas las salas u horarios disponibles.
+                    </p>
+                    <a href="~/Sala" class="btn text-white mx-1" style="background-color:#b33c3c">Salas</a>
+                    <a href="~/Horario" class="btn text-white mx-1" style="background-color:#b33c3c">Horarios</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col p-1">
+            <!-- Horarios -->
+            <div class="card bg-dark text-white h-100" style="border-color:#b33c3c">
+                <div class="card-body">
+                    <h5 class="card-title">Filmes</h5>
+                    <p class="card-text">
+                        Aquí se puede observar un listado de todos los filmes, disponibles o no.
+                        Estos se pueden modificar o eliminar.
+                    </p>
+                    <a href="~/Filmes" class="btn text-white" style="background-color:#b33c3c">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

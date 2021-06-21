@@ -47,7 +47,7 @@ namespace Cine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SalaID")] Sala sala)
+        public ActionResult Create([Bind(Include = "SalaID,Asientos")] Sala sala)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Cine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SalaID")] Sala sala)
+        public ActionResult Edit([Bind(Include = "SalaID,Asientos")] Sala sala)
         {
             if (ModelState.IsValid)
             {

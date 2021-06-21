@@ -12,11 +12,15 @@
 </p>
 <table class="table">
     <tr>
+        <th>Número de Sala</th>
+        <th>Cantidad de Asientos</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>@item.SalaID</td>
+        <td>@item.Asientos</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SalaID }) |
             @Html.ActionLink("Details", "Details", new { id=item.SalaID }) |

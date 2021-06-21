@@ -59,6 +59,33 @@ namespace Cine.Controllers
             return View(socio);
         }
 
+        // GET: Socio/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: Socio/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "SocioID,DatosPersonales")] Socio socio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Socios.Add(socio);
+                db.SaveChanges();
+                TempData["Id"] = socio.SocioID;
+                return RedirectToAction("Result");
+            }
+
+            return View(socio);
+        }
+
+        public ActionResult Result()
+        {
+            return View();
+        }
+
         // GET: Socio/Edit/5
         public ActionResult Edit(int? id)
         {

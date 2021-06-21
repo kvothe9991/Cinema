@@ -65,7 +65,7 @@ namespace Cine.Controllers
             {
                 var ventasPorFilme = filmes.ToDictionary(
                                                f => f.Nombre,
-                                               f => entradas.Count(e => e.Filme == f))
+                                               f => entradas.Count(e => e.Filme.FilmeID == f.FilmeID))
                                            .OrderByDescending(pair => pair.Value);
                 showData.data = ventasPorFilme;
             }
@@ -101,7 +101,7 @@ namespace Cine.Controllers
                                                        .Select(e => e.Calificacion)
                                                        .Average() == i));
                 }
-                showData.data = ventasPorRating;
+                showData.data = ventasPorRating.Reverse();
             }
 
             if (criterio == CriterioEst.Nacionalidad) // comparacion entre cubano y extranjero
